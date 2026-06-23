@@ -1,0 +1,143 @@
+/* ===== Fixed Header Bar ===== */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 52px;
+  padding: 0 16px;
+  background: #ffffff;
+  border-bottom: 1px solid #e8e8e8;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+/* ===== Left Section ===== */
+.header__left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.header__logo {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.header__institute-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1a1a2e;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: 0.2px;
+}
+
+/* ===== Right Section ===== */
+.header__right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+/* Network Status */
+.header__network {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  margin-right: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #16a34a;
+  white-space: nowrap;
+}
+
+.header__network-type {
+  color: #16a34a;
+}
+
+.header__network-arrow {
+  color: #ef4444;
+  flex-shrink: 0;
+}
+
+.header__network-speed {
+  color: #16a34a;
+}
+
+/* Action Icons */
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.header__icon-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  background: transparent;
+  color: #4a5568;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.header__icon-btn:hover {
+  background: #f0f4ff;
+  color: #2437C6;
+}
+
+/* Notification button styling */
+.header__icon-btn--notif {
+  position: relative;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .header {
+    padding: 0 10px;
+    height: 48px;
+  }
+
+  .header__institute-name {
+    font-size: 12px;
+    max-width: 180px;
+  }
+
+  .header__network {
+    display: none;
+  }
+
+  .header__icon-btn {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header__institute-name {
+    max-width: 120px;
+    font-size: 11px;
+  }
+
+  .header__actions {
+    gap: 0;
+  }
+
+  .header__icon-btn {
+    width: 28px;
+    height: 28px;
+  }
+}

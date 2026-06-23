@@ -1,0 +1,56 @@
+/* ===== Login Page — Two Column Layout ===== */
+.login-page {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  background: #ffffff;
+}
+
+/* ===== Right Section ===== */
+.login-page__right {
+  flex: 0 0 55%;
+  max-width: 55%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 40px 60px;
+}
+
+.login-page__right-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 480px;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+  .login-page {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .login-page__right {
+    flex: none;
+    max-width: 100%;
+    width: 100%;
+    min-height: auto;
+    padding: 30px 24px 40px;
+  }
+
+  .login-page__right-inner {
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-page__right {
+    padding: 20px 16px 32px;
+  }
+
+  .login-page__right-inner {
+    max-width: 100%;
+  }
+}

@@ -1,0 +1,151 @@
+/* ===== Module Card ===== */
+.module-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 170px;
+  border-radius: 16px;
+  background: #ffffff;
+  border: none;
+  font-family: inherit;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  outline: none;
+  padding: 0;
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.module-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(36, 55, 198, 0.16);
+}
+
+.module-card:focus-visible {
+  box-shadow: 0 0 0 3px rgba(36, 55, 198, 0.3);
+}
+
+/* Background gradient at top - convex curve */
+.module-card__bg-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 82%;
+  border-radius: 0 0 50% 50% / 0 0 16% 16%;
+  z-index: 1;
+  transition: height 0.35s cubic-bezier(0.25, 0.8, 0.25, 1), border-radius 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Expand gradient to full card on hover */
+.module-card:hover .module-card__bg-gradient {
+  height: 100%;
+  border-radius: 0;
+}
+
+/* Title at top */
+.module-card__title {
+  margin-top: 18px;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #111111;
+  text-align: center;
+  z-index: 2;
+  letter-spacing: 0.1px;
+  transition: none;
+}
+
+/* Icon Container aligned to the bottom */
+.module-card__icon-container {
+  position: absolute;
+  bottom: 8px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  z-index: 2;
+}
+
+/* Outer ring matching the image exactly */
+.module-card__icon-circle {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 4.5px solid #7c8bc7; /* Premium lavender/blue outer ring */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.06);
+  padding: 2px;
+  transition: border-width 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), 
+              border-color 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), 
+              transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Thicker border and scale up on hover */
+.module-card:hover .module-card__icon-circle {
+  border-width: 8px;
+  border-color: #5c6fa7;
+  transform: scale(1.08);
+}
+
+/* Inner content area */
+.module-card__icon-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+}
+
+.module-card__icon-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.module-card__icon-fallback {
+  font-size: 22px;
+  font-weight: 700;
+  color: #2437C6;
+}
+
+/* PTG highlight style */
+.module-card__icon-circle--ptg {
+  border: 5px solid #4a5fc1; /* Slightly thicker, deeper blue ring for PTG */
+}
+
+/* Thicker border for PTG on hover */
+.module-card:hover .module-card__icon-circle--ptg {
+  border-width: 9px;
+  border-color: #3b4ca8;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .module-card {
+    height: 144px;
+    border-radius: 14px;
+  }
+
+  .module-card__title {
+    margin-top: 14px;
+    font-size: 12px;
+  }
+
+  .module-card__icon-circle {
+    width: 64px;
+    height: 64px;
+    border-width: 3.5px;
+  }
+
+  .module-card:hover .module-card__icon-circle {
+    border-width: 6px;
+  }
+}
