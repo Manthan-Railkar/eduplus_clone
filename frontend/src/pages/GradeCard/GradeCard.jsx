@@ -2,20 +2,35 @@ import { useState } from 'react'
 import DashboardLayout from '../../layouts/DashboardLayout'
 import Breadcrumb from '../../components/dashboard/Breadcrumb'
 import GradeCardResult from './GradeCardResult'
-import { ACADEMIC_YEARS, SEMESTERS, GRADE_CARD_DATA } from '../../constants/gradeCardData'
+import { ACADEMIC_YEARS, SEMESTERS } from '../../constants/gradeCardData'
+import { gradeCardService } from '../../services/gradeCardService'
 import './GradeCard.css'
 
 function GradeCard() {
   const [academicYear, setAcademicYear] = useState('2025-26')
   const [semester, setSemester] = useState('2')
   const [showResult, setShowResult] = useState(false)
+  const [gradeCardData, setGradeCardData] = useState(null)
+  const [error, setError] = useState('')
+  const [loading, setLoading] = useState(false)
 
-  const handleProceed = () => {
-    setShowResult(true)
+  const handleProceed = async () => {
+    setError('')
+    setLoading(true)
+    try {
+      const data = await gradeCardService.getGradeCard(academicYear, semester)
+      setGradeCardData(data)
+      setShowResult(true)
+    } catch (err) {
+      setError(err.message || 'Failed to retrieve grade card. Please try again.')
+    } finally {
+      setLoading(false)
+    }
   }
 
   const handleBack = () => {
     setShowResult(false)
+    setGradeCardData(null)
   }
 
   return (
@@ -41,6 +56,7 @@ function GradeCard() {
                   className="gradecard-form__select"
                   value={academicYear}
                   onChange={(e) => setAcademicYear(e.target.value)}
+                  disabled={loading}
                 >
                   {ACADEMIC_YEARS.map((year) => (
                     <option key={year} value={year}>{year}</option>
@@ -60,6 +76,7 @@ function GradeCard() {
                   className="gradecard-form__select"
                   value={semester}
                   onChange={(e) => setSemester(e.target.value)}
+                  disabled={loading}
                 >
                   {SEMESTERS.map((sem) => (
                     <option key={sem.value} value={sem.value}>{sem.label}</option>
@@ -73,14 +90,20 @@ function GradeCard() {
               className="gradecard-form__proceed"
               onClick={handleProceed}
               id="gradecard-proceed-btn"
+              disabled={loading}
             >
-              PROCEED
+              {loading ? 'LOADING...' : 'PROCEED'}
             </button>
           </div>
+          {error && (
+            <p className="gradecard-form__error" style={{ color: '#d32f2f', marginTop: '15px', fontWeight: '500' }}>
+              {error}
+            </p>
+          )}
         </div>
       ) : (
         <GradeCardResult
-          data={GRADE_CARD_DATA}
+          data={gradeCardData}
           academicYear={academicYear}
           semester={semester}
           onBack={handleBack}
