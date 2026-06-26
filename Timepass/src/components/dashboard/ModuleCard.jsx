@@ -1,17 +1,26 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import './ModuleCard.css'
 
 function ModuleCard({ module }) {
   const [imgError, setImgError] = useState(false)
-  const isPtg = module.id === 'ptg'
+  const isHighlighted = module.id === 'exam-form'
+  const navigate = useNavigate()
+
+  const handleClick = () => {
+    if (module.route) {
+      navigate(module.route)
+    }
+  }
 
   return (
     <button
-      className={`module-card ${isPtg ? 'module-card--ptg' : ''}`}
+      className={`module-card ${isHighlighted ? 'module-card--highlighted' : ''}`}
       id={`module-${module.id}`}
       aria-label={`Open ${module.title} module: ${module.description}`}
+      onClick={handleClick}
     >
-      {/* Background gradient at the top, leaving white curves at bottom */}
+      {/* Background gradient */}
       <div
         className="module-card__bg-gradient"
         style={{ background: module.gradient }}
@@ -20,9 +29,9 @@ function ModuleCard({ module }) {
       {/* Title at the top */}
       <span className="module-card__title">{module.title}</span>
 
-      {/* Centered icon circle on the boundary line */}
+      {/* Centered icon circle */}
       <div className="module-card__icon-container">
-        <div className={`module-card__icon-circle ${isPtg ? 'module-card__icon-circle--ptg' : ''}`}>
+        <div className={`module-card__icon-circle ${isHighlighted ? 'module-card__icon-circle--highlighted' : ''}`}>
           <div className="module-card__icon-inner">
             {!imgError ? (
               <img

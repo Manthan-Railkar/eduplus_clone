@@ -2,6 +2,7 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import Login from '../pages/Login/Login'
 import Dashboard from '../pages/Dashboard/Dashboard'
+import Examination from '../pages/Examination/Examination'
 import ProtectedRoute from './ProtectedRoute'
 
 function LoginGuard() {
@@ -46,6 +47,16 @@ function AppRoutes() {
         }
       />
 
+      {/* Protected examination sub-page */}
+      <Route
+        path="/dashboard/examination"
+        element={
+          <ProtectedRoute>
+            <Examination />
+          </ProtectedRoute>
+        }
+      />
+
       {/* Fallback route */}
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
@@ -53,3 +64,4 @@ function AppRoutes() {
 }
 
 export default AppRoutes
+

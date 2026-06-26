@@ -1,7 +1,7 @@
 import { Search } from 'lucide-react'
 import './SearchBar.css'
 
-function SearchBar({ value, onChange }) {
+function SearchBar({ value, onChange, placeholder = 'Search Module' }) {
   return (
     <div className="search-bar" role="search" aria-label="Search modules">
       <div className="search-bar__wrapper">
@@ -9,7 +9,7 @@ function SearchBar({ value, onChange }) {
           id="module-search"
           type="text"
           className="search-bar__input"
-          placeholder="Search Module"
+          placeholder={placeholder}
           value={value}
           onChange={(e) => onChange(e.target.value)}
           autoComplete="off"
