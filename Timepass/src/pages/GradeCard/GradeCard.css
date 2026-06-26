@@ -1,0 +1,118 @@
+/* ===== Grade Card Selection Form ===== */
+.gradecard-form {
+  margin-top: 32px;
+  padding: 0 24px;
+}
+
+.gradecard-form__row {
+  display: flex;
+  align-items: flex-end;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.gradecard-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 240px;
+}
+
+.gradecard-form__label {
+  font-size: 11.5px;
+  font-weight: 500;
+  color: #888;
+  letter-spacing: 0.2px;
+}
+
+.gradecard-form__select-wrap {
+  position: relative;
+}
+
+.gradecard-form__select {
+  width: 100%;
+  min-width: 240px;
+  padding: 10px 36px 10px 14px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  background: #ffffff;
+  border: 1.5px solid #d4d4d4;
+  border-radius: 6px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 14px;
+}
+
+.gradecard-form__select:focus {
+  border-color: #2437C6;
+  box-shadow: 0 0 0 3px rgba(36, 55, 198, 0.08);
+}
+
+.gradecard-form__select:hover {
+  border-color: #aaa;
+}
+
+.gradecard-form__proceed {
+  padding: 10px 28px;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #ffffff;
+  background: #2563eb;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: inherit;
+  letter-spacing: 0.8px;
+  transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+  white-space: nowrap;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gradecard-form__proceed:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.gradecard-form__proceed:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .gradecard-form {
+    margin-top: 24px;
+    padding: 0 16px;
+  }
+
+  .gradecard-form__row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .gradecard-form__field {
+    min-width: 100%;
+  }
+
+  .gradecard-form__select {
+    min-width: 100%;
+  }
+
+  .gradecard-form__proceed {
+    align-self: flex-start;
+  }
+}
